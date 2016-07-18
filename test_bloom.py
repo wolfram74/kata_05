@@ -9,7 +9,7 @@ class BloomTest(unittest.TestCase):
         self.assertEqual(type(self.filter), bloom_filter.BloomFilter)
 
     def test_not_included(self):
-        self.assertFalse(self.filter.inlucdes('nothing'))
+        self.assertFalse(self.filter.includes('nothing'))
 
     def test_addition(self):
         self.assertTrue(self.filter.add('something'))
