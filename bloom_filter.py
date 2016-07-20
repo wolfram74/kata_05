@@ -21,15 +21,8 @@ class BloomFilter():
 
     def hash_indices(self, string):
         bits = len(self.bit_map)
-        places = len(str(bits))
-        hash_size = len(str(abs(hash(string))))
-        spots_per_hash = hash_size//places
-        hashes_needed = 1 + self.hash_iterations // spots_per_hash
         indices = []
-        for loop in range(hashes_needed):
-            seed = string + str(loop)
-            hash_string = str(abs(hash(seed)))
-            for spot in range(spots_per_hash):
-                index_str = hash_string[spot*places:(spot+1)*places]
-                indices.append(int(index_str)%bits)
+        for salt in range(self.hash_iterations):
+            seed = string + str(salt)
+            indices.append( hash(seed) % bits )
         return indices

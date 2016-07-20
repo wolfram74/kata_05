@@ -7,9 +7,9 @@ print(tester.dictionary.items)
 for word in words:
     print(word, tester.valid(word))
 
-def random_word():
+def random_word(length=5):
     letters = [chr(number) for number in range(97, 97+26)]
-    return ''.join(random.sample(letters, 5))
+    return ''.join(random.sample(letters, length))
 
 hits = 0
 included = []
